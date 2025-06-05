@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 220 70% 40%; /* Changed to a deeper blue */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 220 70% 40%; /* Changed to match primary */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 75% 55%; /* Brightened deeper blue for dark mode */
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 75.1%; /* Brightened muted text for dark mode */
+    --accent: 217.2 32.6% 25.5%; /* Brightened accent for dark mode */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 27.5%; /* More visible border for dark mode */
+    --input: 217.2 32.6% 27.5%; /* More visible input for dark mode */
+    --ring: 217 75% 55%; /* Brightened ring for dark mode to match primary */
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+  h3 {
+    @apply text-2xl font-bold tracking-tight;
+  }
+  p {
+    @apply text-base md:text-lg font-medium;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80;
+  }
+  .dark {
+    --tw-text-opacity: 0.95;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-medium;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-extrabold;
+  }
+  p {
+    @apply font-medium;
+  }
+  a {
+    @apply font-bold;
+  }
+
+  /* Improve dark mode text visibility */
+  .dark p,
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6,
+  .dark a,
+  .dark span,
+  .dark label {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Improve contrast for buttons in dark mode */
+  .dark .bg-white {
+    --tw-bg-opacity: 0.95;
+  }
+
+  /* Improve contrast for cards in dark mode */
+  .dark .bg-gray-50 {
+    @apply bg-gray-800;
+  }
+
+  /* Ensure text in gray-50 backgrounds is visible in dark mode */
+  .dark .bg-gray-50 h3,
+  .dark .bg-gray-50 p,
+  .dark .bg-gray-50 span {
+    @apply text-gray-100;
+  }
+
+  /* Fix muted text in dark mode */
+  .dark .text-muted-foreground {
+    @apply text-gray-300;
+  }
+
+  /* Fix text in cards for dark mode */
+  .dark .bg-white {
+    @apply bg-gray-800;
+  }
+
+  .dark .bg-white h3,
+  .dark .bg-white p,
+  .dark .bg-white span {
+    @apply text-gray-100;
+  }
+
+  /* Fix text in XCard component for dark mode */
+  .dark .text-black {
+    @apply text-white;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  .animate-subtle-zoom {
+    animation: subtleZoom 20s ease-in-out infinite alternate;
+  }
+
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .animate-on-scroll.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtleZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
