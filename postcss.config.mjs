@@ -1,9 +1,12 @@
+const tailwindcss = require('@tailwindcss/postcss');
+
 module.exports = {
   plugins: {
-    '@tailwindcss/postcss': {},
+    [tailwindcss]: {},
     autoprefixer: {},
   },
 };
+
 // This configuration file sets up PostCSS with Tailwind CSS and Autoprefixer.
 // It uses the '@tailwindcss/postcss' plugin for Tailwind CSS styles and 'autoprefixer' for adding vendor prefixes to CSS rules.
 // Make sure to install the necessary packages:
